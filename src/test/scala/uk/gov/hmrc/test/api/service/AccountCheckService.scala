@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.api.service
 
-import play.api.libs.json.Json
 import play.api.libs.ws.StandaloneWSRequest
 import uk.gov.hmrc.insights.model.request.BankAccountInsightsRequest
 import uk.gov.hmrc.insights.model.request.BankAccountInsightsRequest.implicits.bankAccountInsightsRequestWrites
@@ -35,7 +34,7 @@ class AccountCheckService extends HttpClient {
     Await.result(
       post(
         checkAccountURL,
-        Json.toJsObject(accountDetails).toString(),
+        bankAccountInsightsRequestWrites.writes(accountDetails).toString(),
         ("Content-Type", "application/json")
       ),
       10.seconds
