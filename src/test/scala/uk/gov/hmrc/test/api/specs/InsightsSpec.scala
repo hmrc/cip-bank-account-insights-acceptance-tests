@@ -16,11 +16,13 @@
 
 package uk.gov.hmrc.test.api.specs
 
+import com.github.tomakehurst.wiremock.client.WireMock.{matchingJsonPath, postRequestedFor, urlEqualTo, verify}
 import org.assertj.core.api.Assertions.assertThat
 import uk.gov.hmrc.insights.model.response.response_codes.ACCOUNT_NOT_ON_WATCH_LIST
+import uk.gov.hmrc.test.api.conf.TestConfiguration
 import uk.gov.hmrc.test.api.testdata.BankAccounts.UNKNOWN_ACCOUNT
 
-class InsightsSpec extends BaseSpec {
+class InsightsSpec extends BaseSpec with WireMock {
 
   Feature("Check the insight API") {
 
@@ -35,6 +37,23 @@ class InsightsSpec extends BaseSpec {
 
       assertThat(actual.riskScore).isEqualTo(0)
       assertThat(actual.reason).isEqualTo(ACCOUNT_NOT_ON_WATCH_LIST)
+
+      verify(
+        postRequestedFor(urlEqualTo("/write/audit"))
+          .withRequestBody(
+            matchingJsonPath(
+              "$[?(" +
+                s"@.auditSource == '${TestConfiguration.expectedServiceName}'" +
+                "&& @.auditType == 'TxSucceeded'" +
+                s"&& @.detail.accountNumber == '${UNKNOWN_ACCOUNT.accountNumber}'" +
+                s"&& @.detail.bankAccountInsightsCorrelationId == '${actual.bankAccountInsightsCorrelationId}'" +
+                s"&& @.detail.riskScore == '${actual.riskScore}'" +
+                s"&& @.detail.reason == '${actual.reason}'" +
+                s"&& @.detail.userAgent == '${TestConfiguration.userAgent}'" +
+                ")]"
+            )
+          )
+      )
     }
   }
 }

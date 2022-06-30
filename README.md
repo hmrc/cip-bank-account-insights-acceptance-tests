@@ -12,10 +12,13 @@ Prior to executing the tests ensure you have:
 
 Run the following commands to start services locally:
 
-    sm --start CIP_BANK_ACCOUNT_INSIGHTS --wait 60
-
-Using the `--wait 60` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to
-pass health checks.
+    sm --start CIP_BANK_ACCOUNT_INSIGHTS CIP_RISK_LISTS --appendArgs '{
+        "CIP_BANK_ACCOUNT_INSIGHTS": [
+            "-J-Dauditing.consumer.baseUri.port=6001",
+            "-J-Dauditing.consumer.baseUri.host=localhost",
+            "-J-Dauditing.enabled=true"
+        ]
+    }'
 
 ## Running specs
 
