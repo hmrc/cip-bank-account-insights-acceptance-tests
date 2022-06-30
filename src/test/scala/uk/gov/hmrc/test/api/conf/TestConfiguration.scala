@@ -32,6 +32,8 @@ object TestConfiguration {
     }
     s"$host${serviceRoute(service)}"
   }
+  def userAgent: String           = envConfig.getString("user-agents.test-http-client")
+  def expectedServiceName: String = envConfig.getString("user-agents.service-name")
 
   def environmentHost: String = envConfig.getString("services.host")
 
