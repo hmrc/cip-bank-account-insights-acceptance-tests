@@ -12,7 +12,7 @@ Prior to executing the tests ensure you have:
 
 Run the following commands to start services locally:
 
-    sm --start BANK_ACCOUNT_INSIGHTS RISK_LISTS --appendArgs '{
+    sm --start BANK_ACCOUNT_INSIGHTS ATTRIBUTE_RISK_LISTS --appendArgs '{
         "BANK_ACCOUNT_INSIGHTS": [
             "-J-Dauditing.consumer.baseUri.port=6001",
             "-J-Dauditing.consumer.baseUri.host=localhost",
