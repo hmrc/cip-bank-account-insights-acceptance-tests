@@ -12,8 +12,8 @@ Prior to executing the tests ensure you have:
 
 Run the following commands to start services locally:
 
-    sm --start CIP_BANK_ACCOUNT_INSIGHTS CIP_RISK_LISTS --appendArgs '{
-        "CIP_BANK_ACCOUNT_INSIGHTS": [
+    sm --start BANK_ACCOUNT_INSIGHTS ATTRIBUTE_RISK_LISTS --appendArgs '{
+        "BANK_ACCOUNT_INSIGHTS": [
             "-J-Dauditing.consumer.baseUri.port=6001",
             "-J-Dauditing.consumer.baseUri.host=localhost",
             "-J-Dauditing.enabled=true"
