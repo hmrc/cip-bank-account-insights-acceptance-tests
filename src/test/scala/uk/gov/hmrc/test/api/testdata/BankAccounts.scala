@@ -19,6 +19,8 @@ package uk.gov.hmrc.test.api.testdata
 import uk.gov.hmrc.insights.model.request.BankAccountInsightsRequest
 
 object BankAccounts {
-  val UNKNOWN_ACCOUNT: BankAccountInsightsRequest = BankAccountInsightsRequest(sortCode = "404784", accountNumber = "70872490")
-  val RISKY_ACCOUNT: BankAccountInsightsRequest = BankAccountInsightsRequest(sortCode = "830828", accountNumber = "31857475")
+  val UNKNOWN_ACCOUNT: BankAccountInsightsRequest =
+    BankAccountInsightsRequest(sortCode = "404784", accountNumber = "70872490")
+  val RISKY_ACCOUNT: BankAccountInsightsRequest   =
+    BankAccountInsightsRequest(sortCode = "830828", accountNumber = "31857475")
 }

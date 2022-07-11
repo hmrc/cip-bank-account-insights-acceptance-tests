@@ -29,7 +29,9 @@ trait HttpClient {
 
   implicit val actorSystem: ActorSystem = ActorSystem()
   val userAgent                         = TestConfiguration.userAgent
-  val wsClient: StandaloneAhcWSClient   = StandaloneAhcWSClient(AhcWSClientConfig(WSClientConfig(userAgent = Some(userAgent))))
+  val wsClient: StandaloneAhcWSClient   = StandaloneAhcWSClient(
+    AhcWSClientConfig(WSClientConfig(userAgent = Some(userAgent)))
+  )
   val zapHost: Option[String]           = sys.env.get("ZAP_HOST")
   val defaultZapHost: String            = "localhost:11000"
   implicit val ec: ExecutionContext     = ExecutionContext.global
