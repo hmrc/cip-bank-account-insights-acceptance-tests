@@ -56,8 +56,7 @@ class InsightsSpec extends BaseSpec with WireMock {
       )
     }
 
-    //TODO Enable when this functionality has been added
-    ignore("Get risking information for a bank account on the risk list") {
+    Scenario("Get risking information for a bank account on the risk list") {
       Given("I want to see if we hold any risking information for a bank account")
 
       When("I use the check insights API to see what information we hold")
