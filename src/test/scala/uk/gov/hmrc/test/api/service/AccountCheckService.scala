@@ -27,7 +27,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class AccountCheckService extends HttpClient {
-  val host: String            = TestConfiguration.url("cip-bank-account-insights")
+  val host: String            = TestConfiguration.url("bank-account-insights")
   val checkAccountURL: String = s"$host/${Endpoints.CHECK_INSIGHTS}"
 
   def postInsightsCheck(accountDetails: BankAccountInsightsRequest): StandaloneWSRequest#Self#Response =
