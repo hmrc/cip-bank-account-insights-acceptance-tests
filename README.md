@@ -1,6 +1,6 @@
-# CIP Bank Account Insights Acceptance Tests
+# Bank Account Insights Acceptance Tests
 
-API test suite for `cip-bank-account-insights` using ScalaTest and [play-ws](https://github.com/playframework/play-ws) client.
+API test suite for `bank-account-insights` using ScalaTest and [play-ws](https://github.com/playframework/play-ws) client.
 
 # Running the tests
 
